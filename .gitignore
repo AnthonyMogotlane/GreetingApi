@@ -1,4 +1,6 @@
-**/bin/*
-**/obj/Debug/**
+/bin/
+/obj/Debug
 appsettings.json
+.vscode
+
 
