@@ -19,7 +19,7 @@ app.MapGet("/", () => "Welcome to GreetingApi");
 app.MapGet("/greeted", async (PersonDb db) => await db.Greeted.ToListAsync());
 
 app.MapGet("/greeted/{id}", async (PersonDb db, int id) =>
-   await db.Greeted.FindAsync(id) is Person person ? Results.Ok(person) : Results.NotFound());
+   await db.Greeted.FindAsync(id) is Person person ? Results.Ok(person) : Results.NotFound("Person Not Found"));
 
 app.MapPost("/greeted/", async (PersonDb db, Person person) =>
 {
@@ -66,13 +66,6 @@ app.MapDelete("/greeted/{id}", async (PersonDb db, int id) =>
 
     return Results.NotFound();
 });
-
-// Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
 
 app.UseHttpsRedirection();
 
